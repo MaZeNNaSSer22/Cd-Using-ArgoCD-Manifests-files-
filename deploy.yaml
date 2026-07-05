@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: http-app-deployment
+  labels:
+    app: http-app
+spec:
+  replicas: 2 # تشغيل نسختين من الأبليكشن لضمان عدم التوقف High Availability
+  selector:
+    matchLabels:
+      app: http-app
+  template:
+    metadata:
+      labels:
+        app: http-app
+    spec:
+      containers:
+        - name: http-app-container
+          # استبدل <YOUR_DOCKER_USERNAME> باسم الحساب بتاعك على دوكر هب
+          image: ${{ secrets.DOCKER_USERNAME }}/http-app:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000 # البورت المفتوح جوه كود الـ Node.js
+          resources:
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+            requests:
+              cpu: "200m"
+              memory: "256Mi"

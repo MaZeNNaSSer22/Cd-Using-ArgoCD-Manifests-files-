@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: http-app-service
+spec:
+  selector:
+    app: http-app # لازم يطابق الـ matchLabels اللي في الـ Deployment
+  ports:
+    - protocol: TCP
+      port: 80 # البورت اللي الـ Service هتستقبل عليه من بره
+      targetPort: 3000 # البورت الداخلي بتاع الحاوية (الأبليكشن)
+  type: NodePort # بيفتح بورت على مستوى الـ Nodes كلها لتجربة الأبليكشن بسهولة
