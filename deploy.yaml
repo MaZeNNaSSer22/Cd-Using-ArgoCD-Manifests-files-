@@ -5,7 +5,7 @@ metadata:
   labels:
     app: http-app
 spec:
-  replicas: 2 # تشغيل نسختين من الأبليكشن لضمان عدم التوقف High Availability
+  replicas: 1 # تشغيل نسختين من الأبليكشن لضمان عدم التوقف High Availability
   selector:
     matchLabels:
       app: http-app
