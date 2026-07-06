@@ -17,7 +17,7 @@ spec:
       containers:
         - name: http-app-container
           # استبدل <YOUR_DOCKER_USERNAME> باسم الحساب بتاعك على دوكر هب
-          image: mazennasser/http-app:13
+          image: mazennasser/http-app:16
           imagePullPolicy: Always
           ports:
             - containerPort: 3000 # البورت المفتوح جوه كود الـ Node.js
